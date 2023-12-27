@@ -4,15 +4,21 @@ version = "0.1"
 description = "A drop in replacement for sksparse for sparse Cholseky factorization"
 readme = "README.md"
 requires-python = ">=3.8"
-
-[build-system]
-requires = ["setuptools>=42", "scikit-build-core >=0.4.3", "nanobind >=1.3.2", "scikit-build==0.14.0", "cmake>=3.18"]
-build-backend = "scikit_build_core.build"
-
+keywords = ["cholesky", "sksparse"]
+authors = [
+    {name = "Jeff Quinn", email = "quinnj2@mskcc.org" }
+]
+maintainers = [
+    {name = "Jeff Quinn", email = "quinnj2@mskcc.org" }
+]
 dependencies = [
     "numpy",
     "scipy"
 ]
+
+[build-system]
+requires = ["setuptools>=42", "scikit-build-core >=0.4.3", "nanobind >=1.3.2", "scikit-build==0.14.0", "cmake>=3.18"]
+build-backend = "scikit_build_core.build"
 
 [project.optional-dependencies]
 dev = ["check-manifest"]
