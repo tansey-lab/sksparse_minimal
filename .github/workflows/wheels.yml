@@ -45,7 +45,7 @@ jobs:
 
     - uses: pypa/cibuildwheel@v2.13.0
       env:
-        CIBW_TEST_COMMAND: pytest {project}
+        CIBW_TEST_COMMAND: pytest {project}/src/sksparse_minimal
         CIBW_TEST_REQUIRES: pytest numpy scipy
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
         CIBW_MANYLINUX_AARCH64_IMAGE: manylinux2014
