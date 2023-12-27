@@ -63,11 +63,4 @@ void declare_cholesky(nb::module_ &m, const char *docstr) {
 
 NB_MODULE(_cholespy_core, m) {
     declare_cholesky<double>(m, doc_cholesky_d);
-
-
-#ifdef VERSION_INFO
-    m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
-#else
-    m.attr("__version__") = "dev";
-#endif
 }
