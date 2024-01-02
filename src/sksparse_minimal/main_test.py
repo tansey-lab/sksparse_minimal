@@ -20,6 +20,9 @@ def test_results_compared_to_sksparse():
     x = sparse_cholesky.solve_Lt(b)
     np.testing.assert_array_almost_equal(x, np.array([52.0, -13.0, 3.0]))
 
+    x = sparse_cholesky.solve_Lt(b, False)
+    np.testing.assert_array_almost_equal(x, np.array([13.5, -3.0, 1.0]))
+
     x = sparse_cholesky.solve_L(b)
     np.testing.assert_array_almost_equal(x, np.array([1.0, -1.0, 12.0]))
 

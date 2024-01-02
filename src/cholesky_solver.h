@@ -29,6 +29,14 @@ public:
     // Solve the whole system using the Cholesky factorization on the CPU
     void solve_cpu(int n_rhs, Float *b, Float *x, int mode);
 
+    void change_factor(int to_ll, int to_super);
+
+    int is_ll();
+
+    int is_super();
+
+    int is_monotonic();
+
 
 private:
 
