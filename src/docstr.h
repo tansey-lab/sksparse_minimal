@@ -30,3 +30,20 @@ Parameters
 - `x` - Placeholder for the solution. It must be on the same device and have the
           same shape as `b`.
 )";
+
+
+const char *doc_is_ll = R"(
+Returns true if the factorization is LL, false if it is LDL.
+)";
+
+const char *doc_is_super = R"(
+Returns true if the factorization is supernodal, false if it is simplicial.
+)";
+
+const char *doc_is_monotonic = R"(
+Returns true if the factorization is monotonic, false if it is not.
+)";
+
+const char *doc_change_factor = R"(
+Change the factorization to use a different matrix.
+)";

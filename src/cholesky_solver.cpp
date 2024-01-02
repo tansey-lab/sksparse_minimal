@@ -154,6 +154,38 @@ void CholeskySolver<Float>::solve_cpu(int n_rhs, Float *b, Float *x, int mode) {
     cholmod_free_dense(&cholmod_x, &m_common);
 }
 
+template<typename Float>
+void CholeskySolver<Float>::change_factor(
+    int to_ll,
+    int to_super
+) {
+    cholmod_change_factor(
+        m_factor->xtype,
+        to_ll,
+        to_super,
+        true,
+        m_factor->is_monotonic,
+        m_factor,
+        &m_common
+    );
+}
+
+template<typename Float>
+int CholeskySolver<Float>::is_ll() {
+    return m_factor->is_ll;
+}
+
+template<typename Float>
+int CholeskySolver<Float>::is_super() {
+    return m_factor->is_super;
+}
+
+template<typename Float>
+int CholeskySolver<Float>::is_monotonic() {
+    return m_factor->is_monotonic;
+}
+
+
 template <typename Float>
 CholeskySolver<Float>::~CholeskySolver() {
     cholmod_free_factor(&m_factor, &m_common);

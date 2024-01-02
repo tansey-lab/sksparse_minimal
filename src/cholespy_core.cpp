@@ -58,7 +58,11 @@ void declare_cholesky(nb::module_ &m, const char *docstr) {
         nb::arg("b").noconvert(),
         nb::arg("x").noconvert(),
         nb::arg("mode") = 0,
-        doc_solve);
+        doc_solve)
+        .def("is_llt", &Class::is_llt, doc_is_llt)
+        .def("is_super", &Class::is_super, doc_is_super)
+        .def("is_monotonic", &Class::is_monotonic, doc_is_monotonic)
+        ;
 }
 
 NB_MODULE(_cholespy_core, m) {
