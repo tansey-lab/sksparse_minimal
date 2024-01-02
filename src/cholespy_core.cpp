@@ -59,9 +59,15 @@ void declare_cholesky(nb::module_ &m, const char *docstr) {
         nb::arg("x").noconvert(),
         nb::arg("mode") = 0,
         doc_solve)
-        .def("is_llt", &Class::is_llt, doc_is_llt)
+        .def("is_ll", &Class::is_ll, doc_is_ll)
         .def("is_super", &Class::is_super, doc_is_super)
         .def("is_monotonic", &Class::is_monotonic, doc_is_monotonic)
+        .def("change_factor", [](Class &self, int to_ll, int to_super) {
+            self.change_factor(to_ll, to_super);
+        },
+        nb::arg("to_ll"),
+        nb::arg("to_super"),
+        doc_change_factor)
         ;
 }
 

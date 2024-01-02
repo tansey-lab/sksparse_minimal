@@ -33,17 +33,35 @@ Parameters
 
 
 const char *doc_is_ll = R"(
-Returns true if the factorization is LL, false if it is LDL.
+Returns 1 if the factorization is LL, 0 if it is LDL.
 )";
 
 const char *doc_is_super = R"(
-Returns true if the factorization is supernodal, false if it is simplicial.
+Returns 1 if the factorization is supernodal, 0 if it is simplicial.
 )";
 
 const char *doc_is_monotonic = R"(
-Returns true if the factorization is monotonic, false if it is not.
+Returns 1 if the factorization is monotonic, 0 if it is not.
 )";
 
 const char *doc_change_factor = R"(
-Change the factorization to use a different matrix.
+Change the type of the factorization. These are the valid combinations:
+
+simplicial LDL':  (is_ll 0, is_super 0).  Stored in compressed
+     column form, using the simplicial components above (nzmax, p, i,
+     x, z, nz, next, and prev).  The unit diagonal of L is not stored,
+     and D is stored in its place.  There are no supernodes.
+
+simplicial LL': (is_ll 1, is_super 0).  Uses the same storage
+     scheme as the simplicial LDL', except that D does not appear.
+     The first entry of each column of L is the diagonal entry of
+     that column of L.
+
+supernodal LL': (is_ll 1, is_super 1).  A supernodal factor,
+     using the supernodal components described above (nsuper, ssize,
+     xsize, maxcsize, maxesize, super, pi, px, s, x, and z).
+     A supernodal factorization is never zomplex.
+
+- `to_ll` - If 1, the factorization will be LL, if 0 it will be LDL.
+- `to_super` - If 1, the factorization will be supernodal, if 0 it will be simplicial.
 )";

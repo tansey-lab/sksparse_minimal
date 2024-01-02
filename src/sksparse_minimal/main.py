@@ -27,6 +27,12 @@ class SparseCholesky:
         self._solver.solve(b.astype(np.float64), res, method)
         return res
 
+    def _ensure_L_or_LD_inplace(self, want_L):
+        want_super = self._solver.is_super() and want_L
+        self._solver.change_factor(want_L, want_super)
+        if not bool(self._solver.is_ll()) == want_L:
+            raise ValueError("Could not change factorization")
+
     def solve_A(self, b):
         return self._solve(b, CHOLMOD_A)
 
@@ -34,18 +40,22 @@ class SparseCholesky:
         return self._solve(b, CHOLMOD_D)
 
     def solve_DLt(self, b):
+        self._ensure_L_or_LD_inplace(False)
         return self._solve(b, CHOLMOD_DLt)
 
-    def solve_L(self, b):
+    def solve_L(self, b, use_LDLt_decomposition=True):
+        self._ensure_L_or_LD_inplace(not use_LDLt_decomposition)
         return self._solve(b, CHOLMOD_L)
 
     def solve_LD(self, b):
+        self._ensure_L_or_LD_inplace(False)
         return self._solve(b, CHOLMOD_LD)
 
     def solve_LDLt(self, b):
         return self._solve(b, CHOLMOD_LDLt)
 
-    def solve_Lt(self, b):
+    def solve_Lt(self, b, use_LDLt_decomposition=True):
+        self._ensure_L_or_LD_inplace(not use_LDLt_decomposition)
         return self._solve(b, CHOLMOD_Lt)
 
     def apply_P(self, b):
