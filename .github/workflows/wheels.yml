@@ -44,7 +44,7 @@ jobs:
       with:
         submodules: true
 
-    - uses: pypa/cibuildwheel@v3
+    - uses: pypa/cibuildwheel@v3.3.0
       env:
         CIBW_TEST_COMMAND: pytest {project}/src/sksparse_minimal
         CIBW_TEST_REQUIRES: pytest numpy scipy
