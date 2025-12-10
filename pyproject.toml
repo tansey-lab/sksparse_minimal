@@ -1,6 +1,6 @@
 [project]
 name = "sksparse_minimal"
-version = "0.2"
+version = "0.3"
 description = "A drop in replacement for sksparse for sparse Cholseky factorization"
 readme = "README.md"
 requires-python = ">=3.8"
