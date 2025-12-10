@@ -51,7 +51,3 @@ MACOSX_DEPLOYMENT_TARGET = "10.14"
 
 [tool.cibuildwheel.windows]
 before-build = "pip install delvewheel"
-repair-wheel-command = "delvewheel repair --add-path {project}/ext/suitesparse-metis-for-windows/lapack_windows/x64 -w {dest_dir} {wheel}"
-
-[tool.cibuildwheel.windows.config-settings]
-"cmake.define.LAPACK_DIR" = "ext/suitesparse-metis-for-windows/lapack_windows/x64"

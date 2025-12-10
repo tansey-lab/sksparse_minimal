@@ -47,6 +47,7 @@ jobs:
     - uses: pypa/cibuildwheel@v3.2
       env:
         CIBW_BEFORE_ALL_LINUX: "dnf install -y lapack-devel"
+        CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: "delvewheel repair --add-path {project}/ext/suitesparse-metis-for-windows/lapack_windows/x64 -w {dest_dir} {wheel}"
 
     - name: Verify clean directory
       run: git diff --exit-code
