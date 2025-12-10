@@ -15,9 +15,9 @@ void declare_cholesky(nb::module_ &m, const char *docstr) {
     nb::class_<Class>(m, class_name.c_str(), docstr)
         .def("__init__", [](Class *self,
                             uint32_t n_rows,
-                            nb::ndarray<int32_t, nb::shape<nb::any>, nb::c_contig> ii,
-                            nb::ndarray<int32_t, nb::shape<nb::any>, nb::c_contig> jj,
-                            nb::ndarray<double, nb::shape<nb::any>, nb::c_contig> x) {
+                            nb::ndarray<int32_t, nb::shape<-1>, nb::c_contig> ii,
+                            nb::ndarray<int32_t, nb::shape<-1>, nb::c_contig> jj,
+                            nb::ndarray<double, nb::shape<-1>, nb::c_contig> x) {
             if (jj.shape(0) != x.shape(0))
                 throw std::invalid_argument("Sparse CSC matrix: the row index and data arrays should have the same size.");
             if (ii.shape(0) != n_rows+1)
