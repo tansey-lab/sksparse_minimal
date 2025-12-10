@@ -49,5 +49,3 @@ test-requires = ["pytest", "numpy", "scipy"]
 [tool.cibuildwheel.macos.environment]
 MACOSX_DEPLOYMENT_TARGET = "10.14"
 
-[tool.cibuildwheel.windows]
-before-build = "pip install delvewheel"
